@@ -1,3 +1,4 @@
+import DesignPatterns.Builder.Car;
 import DesignPatterns.Factory.Vehicle;
 import DesignPatterns.Factory.VehicleFactory;
 import DesignPatterns.Singleton.Logger;
@@ -20,5 +21,15 @@ public class Main {
         //Call singleton
         Logger logger = Logger.getLogger();
         logger.log("siiiiiiiiiu");
+
+        //Call builder
+        Car.CarBuilder carBuilder = new Car.CarBuilder();
+
+        Car obj = carBuilder.
+                setEngine("testEngine12").
+                setColor("Red").
+                setWheels(6).
+                build();
+        System.out.println(obj.toString());
     }
 }
