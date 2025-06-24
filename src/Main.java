@@ -2,6 +2,12 @@ import DesignPatterns.Builder.Car;
 import DesignPatterns.Factory.Vehicle;
 import DesignPatterns.Factory.VehicleFactory;
 import DesignPatterns.Singleton.Logger;
+import TicTacToe.model.Board;
+import TicTacToe.model.Player;
+import TicTacToe.service.Game;
+import TicTacToe.strategy.RowColDiagonalWinning;
+
+import java.util.List;
 
 import static java.lang.Thread.sleep;
 
@@ -31,5 +37,16 @@ public class Main {
                 setWheels(6).
                 build();
         System.out.println(obj.toString());
+
+        Player p1 = new Player("A", 'X');
+        Player p2 = new Player("B", 'O');
+        Board board = new Board(3);
+        Game game = new Game(board, List.of(p1, p2), new RowColDiagonalWinning());
+
+        game.makeMove(0, 0); // A
+        game.makeMove(1, 0); // B
+        game.makeMove(0, 1); // A
+        game.makeMove(1, 1); // B
+        game.makeMove(0, 2); // A wins
     }
 }
