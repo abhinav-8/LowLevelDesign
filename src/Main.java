@@ -38,6 +38,8 @@ public class Main {
                 build();
         System.out.println(obj.toString());
 
+
+        //Play TicTacToe
         Player p1 = new Player("A", 'X');
         Player p2 = new Player("B", 'O');
 
