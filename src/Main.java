@@ -40,13 +40,20 @@ public class Main {
 
         Player p1 = new Player("A", 'X');
         Player p2 = new Player("B", 'O');
-        Board board = new Board(3);
-        Game game = new Game(board, List.of(p1, p2), new RowColDiagonalWinning());
+
+        Game.GameBuilder gameBuilder = new Game.GameBuilder();
+        Game game = gameBuilder.setBoard(
+                new Board.BoardBuilder().setBoardSize(3).build()
+        ).setPlayerList(List.of(p1,p2)).setWinningStrategy(
+                new RowColDiagonalWinning()
+        ).build();
 
         game.makeMove(0, 0); // A
         game.makeMove(1, 0); // B
         game.makeMove(0, 1); // A
         game.makeMove(1, 1); // B
-        game.makeMove(0, 2); // A wins
+        game.makeMove(0, 2); // A
+        game.undo();
+        game.makeMove(0, 2); // A
     }
 }
