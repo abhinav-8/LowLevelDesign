@@ -10,6 +10,7 @@ public class TrafficLightContext {
     public void setState(TrafficLightState state) {
         this.currentState = state;
     }
+
     public void next() {
         currentState.next(this);
     }

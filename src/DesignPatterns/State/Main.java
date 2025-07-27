@@ -8,6 +8,5 @@ public class Main {
         trafficLightContext.next();
         trafficLightContext.next();
         trafficLightContext.next();
-
     }
 }
