@@ -5,9 +5,8 @@ import lombok.SneakyThrows;
 
 import static org.example.multithreading.OddEvenZeroFibbonacci.Turn.*;
 
-@AllArgsConstructor
 public class Runner implements Runnable {
-    private final int n;
+
     @Override
     @SneakyThrows
     public void run() {
