@@ -113,11 +113,11 @@ class Coin implements IGameEntity {
 }
 
 interface IWinningStrategy {
-    boolean didPlayerWin(Player player);
+    boolean didPlayerWin(Player player, Board board);
 }
 
 class ReachEndWinningStrategy implements WinningStrategy {
-    boolean didPlayerWin(Player player) {
+    boolean didPlayerWin(Player player, Board board) {
         return player.getPosition() == board.getSize();
     }
 }
@@ -178,7 +178,9 @@ void main(String[] args) {
     Board board = new Board(100, entities);
     List<Player> players = Arrays.asList(new Player("A", "blue", 0, 0), new Player("B", "red", 0, 0));
     Dice dice = new Dice(6);
-    Game game = new Game(board, players, dice, 0);
+    ReachEndWinningStrategy reachEndWinningStrategy = new ReachEndWinningStrategy();
+    RoundRobin roundRobin = new RoundRobin();
+    Game game = new Game(board, players, dice, 0, reachEndWinningStrategy, roundRobin);
     game.startGame();
 }
 ```
