@@ -10,6 +10,10 @@ import lombok.Setter;
 public class Dice implements DiceRollStrategy{
     int faces;
 
+    public Dice(){
+        this.faces = 6;
+    }
+
     @Override
     public int roll() {
         return (int) (Math.random()*faces) + 1;
