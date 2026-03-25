@@ -7,7 +7,7 @@ Design a system to manage elevators in a multi-floor building. The system should
 - The system should provide real-time updates of elevator positions and states (for display panels).
 Also, discuss how you would handle scalability and concurrency when multiple users are requesting elevators at the same time.
 
-# 🚀 Elevator System
+# 🚀 Elevator System -> FOLLOWED strategy and observer. Factory can be implemented for various types of elevators, command can also be implemented.  
 
 ```java
 // Enums

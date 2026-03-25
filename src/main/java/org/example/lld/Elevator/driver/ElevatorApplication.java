@@ -1,5 +1,8 @@
 package org.example.lld.Elevator.driver;
 
+import org.example.lld.Elevator.command.ExternalCommand;
+import org.example.lld.Elevator.command.ICommand;
+import org.example.lld.Elevator.command.InternalCommand;
 import org.example.lld.Elevator.model.Building;
 import org.example.lld.Elevator.model.ElevatorDirection;
 import org.example.lld.Elevator.service.ElevatorController;
@@ -12,22 +15,28 @@ public class ElevatorApplication {
         ElevatorController controller = building.getElevatorController();
 
         System.out.println("=== Initial External Requests ===");
-        controller.requestElevator(5, ElevatorDirection.UP);
-        controller.requestElevator(2, ElevatorDirection.UP);
-        controller.requestElevator(-2, ElevatorDirection.DOWN);
+        ICommand c2 = new ExternalCommand(2, ElevatorDirection.UP, controller);
+        ICommand c1 = new ExternalCommand(5, ElevatorDirection.UP, controller);
+        ICommand c3 = new ExternalCommand(-2, ElevatorDirection.DOWN, controller);
+
+        c1.execute();
+        c2.execute();
+        c3.execute();
 
         for (int t = 0; t < 15; t++) {
             System.out.println("----------------------------- STEP " + t + " -------------------------------------");
             // Phase 1: internal request
             if (t == 3) {
                 System.out.println("\n>>> Internal Request: Elevator 1 → Floor 10");
-                controller.requestFloor(1, 10);
+                ICommand c = new InternalCommand(5, 1, controller);
+                c.execute();
             }
 
             // Phase 2: new external request
             if (t == 6) {
                 System.out.println("\n>>> New External Request: Floor 9 DOWN");
-                controller.requestElevator(9, ElevatorDirection.DOWN);
+                ICommand c = new ExternalCommand(9, ElevatorDirection.DOWN, controller);
+                c.execute();
             }
 
             // Step simulation
