@@ -25,12 +25,12 @@ public class VendingMachine {
     private List<Denomination> inserted = new ArrayList<>();
     private Inventory inventory = new Inventory();
 
-    public VendingMachine(Inventory inventory, Observer observer) {
+    public VendingMachine(Inventory inventory) {
         state = new IdleState();
-        addObserver(new Display());
         selectedSlot = -1;
         changeMap = new HashMap<>();
         cashMap = new HashMap<>();
+        observers = new ArrayList<>();
         this.inventory =  inventory;
     }
 

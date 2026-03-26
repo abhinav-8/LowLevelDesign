@@ -19,7 +19,8 @@ public class VendingMachineApplication {
         Inventory inventory = new Inventory();
         inventory.addSlot(new Slot(101, coke, 5));
         inventory.addSlot(new Slot(102, biscuit, 2));
-        VendingMachine vendingMachine = new VendingMachine(inventory, new Display());
+        VendingMachine vendingMachine = new VendingMachine(inventory);
+        vendingMachine.addObserver(new Display());
 
 //---------------------------------------------------------------------------------
 
