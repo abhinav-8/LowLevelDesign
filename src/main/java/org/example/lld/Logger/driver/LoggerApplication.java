@@ -19,6 +19,7 @@ public class LoggerApplication {
         sinks.put(Level.INFO, List.of(new ConsoleSink()));
         sinks.put(Level.WARN, List.of(new ConsoleSink()));
         sinks.put(Level.ERROR, List.of(new ConsoleSink()));
+        sinks.put(Level.DEBUG, List.of(new ConsoleSink()));
 
         String format = "[timestamp] [level] [namespace] [threadName] [message]";
 
