@@ -1,0 +1,17 @@
+package org.example.lld.Logger.strategy.handler;
+
+import org.example.lld.Logger.model.Configuration;
+import org.example.lld.Logger.model.Message;
+
+public class Messagehandler implements IMessageHandler {
+
+    @Override
+    public boolean doesSupport(String token) {
+        return token.equals("message");
+    }
+
+    @Override
+    public String gethandlerValue(Message message, Configuration configuration) {
+        return message.getContent();
+    }
+}
